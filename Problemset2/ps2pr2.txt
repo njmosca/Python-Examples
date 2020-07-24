@@ -1,0 +1,71 @@
+##### 2-1 ######
+
+line of code   | x  | y  | z  |
+--------------------------------
+x = 11         | 11 |    |    |
+y = 5          | 11 | 5  |    |   
+x = x + 6      | 17 |    |    |
+z = y + x      |    |    | 22 |
+x = x // 7     | 2  |    |    |
+y = z % 3      |    | 1  |    |
+
+
+
+
+##### 2-2 ######
+
+global variables (ones that belong to the global scope)
+  a  |  b  
+-----------
+  5  |  3     
+	4  |  3  # after a is changed
+
+#### hard to understand going back and forth between webpage and where to show answers
+## listed local varibles by line
+local variables (ones that belong to foo)
+  a  |  b  
+-----------
+	 5 |  1   
+	 4 |  1   
+
+
+output (the lines printed by the program)
+------
+5 3
+4 3 # global varible a is changed
+4 3
+
+
+
+
+
+##### 2-3 ######
+
+global variables (ones that belong to the global scope)
+  a  |  b  
+-----------
+  4  |  3     
+  4  |  6
+  4  |  6
+
+wow's local variables
+  a  |  b  
+-----------
+  3  | 6       
+  4  | 8
+  6  | 12
+yay's local variables
+  a  |  b  
+-----------
+  20 | 4   
+     |
+
+output (the lines printed by the program)
+------
+(4, 3)
+('wow:', 3, 6)
+(4, 6)
+('wow:', 4, 8)
+('wow:', 6, 12)
+('yay:', 20, 4)
+(4, 6)
