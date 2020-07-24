@@ -1,0 +1,156 @@
+# Nick mosca
+# njmosca@bu.edu
+
+
+
+puzzles with 5-move optimal solutions
+-------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+random                  10              8.2             618.7 # good but lucky 
+BFS                     10              5.0              47.1 # good but i feel this will change with harder problems
+DFS (depth limit 20)    10              16.2            19072.7
+DFS (depth limit 50)    10              48.2            49043.0   # took a few mins but decided to just it run
+Greedy Search           10              22.2            55.5
+A*                      10              5.0              6.7    # best, not shocked
+
+
+puzzles with 10-move optimal solutions
+-------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+random                  10              14              11264.5  # got first 3 quick, lagged on rest
+BFS                     10              10              747.4  # very fast
+DFS (depth limit 20)    10              18.8            24858.0
+
+DFS (depth limit 50)    2               50              26003.5  # failed to find them all
+ 
+Greedy Search           10              77.8                1470.4        
+A*                      10              10                 38.3
+
+
+
+
+puzzles with 15-move optimal solutions
+-------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+random                  4               18              6631.8 # failed to finish     
+BFS                    10               15              12672.0   
+DFS (depth limit 20)   10               17.8            68659.0   
+DFS (depth limit 50)  10                48.6            111406.0 # very high avg 
+Greedy Search          9                85.7            3358.9      
+A*                     10               15              494.8
+
+
+Reflection based on table results:
+
+    Based on the results of the three tables my overall impression was that A* and the BFS seemed to always finish the problem set in under a minute.
+ I was not shocked that A* worked the best because this informed algorithm used heuristics and factored in a priority state. Even thought the BFS is 
+ a bit exhaustive it always out preformed the other uninformed algorithm DFS. I was under welmed with both DFS(20) depth and DFS(50) depth, it ran for
+ over a minute in the 5 optimal move problem set and struggled even more later on. The random did very well early, almost as good as A* which could be luck
+ as the problem sets got harder i could notice the design of the algorithm struggling.
+
+    It was clear the the A* was the most reliable followed by the BFS. I would have expected the uninformed BFS algorithm to be a bit slower but the avg_moves 
+seemed to keep up with A*. I was suprised by the Greedy algorithm since it is an informed algorithm. I atribute the difference to the complexity of the priority method.
+The priority method for Greedy was just accounding for a number of misplaced tiles where the priority method for A* factored in heuristics + num_moves made. Overall Greedy only accounds for 
+num steps at a given state rather than apply that principle to the whole problem.
+
+
+
+#######
+
+# UPDATE: my num_moves function in my boad class was slightly off which caused my initial results of Greedy algorithm
+to be slight off. After updateing it did do better. Overall it was outclassed by A* whic hwas no surprize.
+
+NEW HEURISTIC:
+ The new h2 method i used  was state.board.total_steps().  I also added a method in my board class that loops through total rows and columns 
+ for a 3X3 grid which matches the size of puzzle 8 board. This method takes each possible step going from current state to goal state.
+ The absolute value is of the number of columns minus the number of rows is added along with the absolute value of rows minus 
+ columns. The result is a number of steps.  Running the the A* and other algorithms with that information cuts the number of tested states down.
+
+
+
+
+
+
+
+
+
+
+
+#### all of the following tests were performed after submitting files to gradescope with zero errors!
+
+puzzles with 18-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)    4              71.3        613.33  # did not finish        
+Greedy (heuristic h2)   10              116.2       450
+
+
+A* (heuristic h1)     10                18.0        1861.7  
+A* (heuristic h2)     10                18             359.9
+
+
+
+
+
+puzzles with 21-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)   0            0               0
+Greedy (heuristic h2)  10           104.0           379.9
+
+
+A* (heuristic h1)    10             21.0        7728.5
+A* (heuristic h2)     10            21.0        906.3
+
+
+
+
+puzzles with 24-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)   6               154.7           7068      # surprised it did better  than 21 move file
+Greedy (heuristic h2)   10              111             403.8
+
+
+A* (heuristic h1)       3               24              29785.7   # first time failing, did worst than Greedy
+A* (heuristic h2)       10              24.0            2493.0  
+
+
+
+
+
+puzzles with 27-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)   10              163.4           2775.8  # much better with more complex puzzles
+Greedy (heuristic h2)   10              115.8           418.8  
+
+
+A* (heuristic h1)       0               0               0       # ran it twice for a couple mins and nothing was solved
+A* (heuristic h2)       10              27.0            12304.8
+
+
+
+
+
+##### Second Reflection
+
+    Overall the results are quite different than the first batch of test files. The A* with (h1) struggled as the problems got more complex. 
+The opposite was observed with the Greedy (h1). The 24_move file really showed the dynamic between A* (h1) and Greedy (h1).
+I would have to attribute the difference to the priority methods becasue that is the only real difference between the two classes.
+The A* inherits the methods from te Greedy class. Both algorithms using the h2 function worked very well. Even with matched avg moves
+the h2 function tested less states resulting in a faster solution. Applying the h2 heuristic did some of the work for the algorithm by telling 
+it how many layer or steps required, therefore cutting the states tested. The further optimize this i would probability have to change priority
+methods and implement more varibles to build apon h2. 
+
+    
+    
+
+
